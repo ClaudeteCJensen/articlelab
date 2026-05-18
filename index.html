@@ -3,338 +3,107 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ArticleLab — Pesquisa científica com fontes que você pode confiar</title>
-  <meta name="description" content="Um assistente colaborativo para pesquisadores das ciências biológicas e medicina. Busca, verifica e organiza fontes reais — sem inventar referências, sem atalhos." />
+  <title>ArticleLab — Seu parceiro de produção científica</title>
+  <meta name="description" content="Construção conjunta de artigos científicos com fontes verificadas. O pesquisador define o caminho, o ArticleLab executa. A autoria é sempre sua." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --green-50: #E1F5EE;
-      --green-400: #1D9E75;
-      --green-600: #0F6E56;
-      --green-800: #085041;
-      --gray-100: #F5F5F3;
-      --gray-200: #E8E8E5;
-      --gray-500: #888780;
-      --gray-900: #1A1A1A;
-      --white: #ffffff;
-      --radius-md: 8px;
-      --radius-lg: 12px;
-      --radius-full: 9999px;
+      --green-50: #E1F5EE; --green-400: #1D9E75; --green-600: #0F6E56; --green-800: #085041;
+      --gray-200: #E8E8E5; --gray-500: #888780; --gray-900: #1A1A1A;
+      --white: #ffffff; --radius-md: 8px; --radius-lg: 12px; --radius-full: 9999px;
     }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #FAFAF8;
-      color: var(--gray-900);
-      line-height: 1.6;
-    }
-
+    body { font-family: 'Inter', sans-serif; background: #FAFAF8; color: var(--gray-900); line-height: 1.6; }
     a { color: var(--green-600); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* NAV */
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 2rem;
-      border-bottom: 1px solid var(--gray-200);
-      background: var(--white);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-icon {
-      width: 36px;
-      height: 36px;
-      background: var(--green-400);
-      border-radius: 9px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2rem; border-bottom: 1px solid var(--gray-200); background: var(--white); position: sticky; top: 0; z-index: 10; }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo-icon { width: 36px; height: 36px; background: var(--green-400); border-radius: 9px; display: flex; align-items: center; justify-content: center; }
     .logo-icon svg { width: 18px; height: 18px; fill: var(--green-50); }
-
-    .logo-name {
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--gray-900);
-      letter-spacing: -0.3px;
-    }
-
+    .logo-name { font-size: 17px; font-weight: 600; color: var(--gray-900); letter-spacing: -0.3px; }
     .logo-name span { color: var(--green-600); }
-
-    nav a.nav-cta {
-      background: var(--green-400);
-      color: var(--white);
-      font-size: 14px;
-      font-weight: 500;
-      padding: 8px 18px;
-      border-radius: var(--radius-full);
-      transition: background 0.15s;
-    }
-
+    nav a.nav-cta { background: var(--green-400); color: var(--white); font-size: 14px; font-weight: 500; padding: 8px 18px; border-radius: var(--radius-full); transition: background 0.15s; }
     nav a.nav-cta:hover { background: var(--green-600); text-decoration: none; }
 
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 5rem 1.5rem 4rem;
-      max-width: 680px;
-      margin: 0 auto;
-    }
+    .hero { text-align: center; padding: 5rem 1.5rem 4rem; max-width: 680px; margin: 0 auto; }
+    .badge { display: inline-block; background: var(--green-50); color: var(--green-800); font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: var(--radius-full); margin-bottom: 1.25rem; letter-spacing: 0.3px; }
+    h1 { font-size: clamp(28px, 5vw, 40px); font-weight: 600; line-height: 1.2; letter-spacing: -0.8px; color: var(--gray-900); margin-bottom: 0.75rem; }
+    h1 em { font-style: normal; color: var(--green-600); }
+    .tagline { font-size: 15px; font-weight: 500; color: var(--green-600); margin-bottom: 1.25rem; letter-spacing: 0.2px; }
+    .hero p { font-size: 17px; color: var(--gray-500); max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.7; }
 
-    .badge {
-      display: inline-block;
-      background: var(--green-50);
-      color: var(--green-800);
-      font-size: 12px;
-      font-weight: 500;
-      padding: 5px 14px;
-      border-radius: var(--radius-full);
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.3px;
-    }
-
-    h1 {
-      font-size: clamp(28px, 5vw, 40px);
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.8px;
-      color: var(--gray-900);
-      margin-bottom: 1.25rem;
-    }
-
-    h1 em {
-      font-style: normal;
-      color: var(--green-600);
-    }
-
-    .hero p {
-      font-size: 17px;
-      color: var(--gray-500);
-      max-width: 500px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.7;
-    }
-
-    .form-wrap {
-      display: flex;
-      gap: 8px;
-      max-width: 440px;
-      margin: 0 auto 0.75rem;
-    }
-
-    .form-wrap input[type="email"] {
-      flex: 1;
-      padding: 12px 16px;
-      font-size: 15px;
-      font-family: 'Inter', sans-serif;
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius-md);
-      background: var(--white);
-      color: var(--gray-900);
-      outline: none;
-      transition: border-color 0.15s;
-    }
-
-    .form-wrap input[type="email"]:focus { border-color: var(--green-400); }
-    .form-wrap input[type="email"]::placeholder { color: #BBBBBB; }
-
-    .btn {
-      background: var(--green-400);
-      color: var(--white);
-      border: none;
-      padding: 12px 22px;
-      font-size: 15px;
-      font-weight: 500;
-      font-family: 'Inter', sans-serif;
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background 0.15s;
-    }
-
+    .form-wrap { display: flex; flex-direction: column; gap: 10px; max-width: 440px; margin: 0 auto 0.75rem; }
+    .form-row { display: flex; gap: 8px; }
+    .form-wrap input[type="text"], .form-wrap input[type="email"] { flex: 1; padding: 12px 16px; font-size: 15px; font-family: 'Inter', sans-serif; border: 1px solid var(--gray-200); border-radius: var(--radius-md); background: var(--white); color: var(--gray-900); outline: none; transition: border-color 0.15s; width: 100%; }
+    .form-wrap input:focus { border-color: var(--green-400); }
+    .form-wrap input::placeholder { color: #BBBBBB; }
+    .btn { background: var(--green-400); color: var(--white); border: none; padding: 12px 22px; font-size: 15px; font-weight: 500; font-family: 'Inter', sans-serif; border-radius: var(--radius-md); cursor: pointer; white-space: nowrap; transition: background 0.15s; }
     .btn:hover { background: var(--green-600); }
+    .btn:disabled { background: var(--gray-500); cursor: not-allowed; }
+    .form-note { font-size: 13px; color: #BBBBBB; }
+    .success-msg { display: none; background: var(--green-50); color: var(--green-800); border-radius: var(--radius-md); padding: 12px 18px; font-size: 14px; font-weight: 500; max-width: 440px; margin: 0 auto; }
+    .error-msg { display: none; background: #FCEBEB; color: #791F1F; border-radius: var(--radius-md); padding: 12px 18px; font-size: 14px; max-width: 440px; margin: 0 auto; }
 
-    .form-note {
-      font-size: 13px;
-      color: #BBBBBB;
-    }
+    .divider { height: 1px; background: var(--gray-200); max-width: 900px; margin: 0 auto; }
 
-    .success-msg {
-      display: none;
-      background: var(--green-50);
-      color: var(--green-800);
-      border-radius: var(--radius-md);
-      padding: 12px 18px;
-      font-size: 14px;
-      font-weight: 500;
-      max-width: 440px;
-      margin: 0 auto;
-    }
+    .manifesto-wrap { max-width: 700px; margin: 0 auto; padding: 4rem 1.5rem; }
+    .manifesto-inner { border-left: 3px solid var(--green-400); padding-left: 2rem; }
+    .manifesto-label { font-size: 11px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: var(--green-400); margin-bottom: 1.25rem; display: block; }
+    .manifesto-text { font-family: 'Lora', Georgia, serif; font-size: 19px; line-height: 1.9; color: var(--gray-900); }
+    .manifesto-text p { margin-bottom: 1.1rem; }
+    .manifesto-text p:last-child { margin-bottom: 0; }
+    .manifesto-text em { font-style: normal; color: var(--green-600); font-weight: 500; }
 
-    /* DIVIDER */
-    .divider {
-      height: 1px;
-      background: var(--gray-200);
-      max-width: 900px;
-      margin: 0 auto;
-    }
+    section { max-width: 900px; margin: 0 auto; padding: 4rem 1.5rem; }
+    .section-label { font-size: 12px; font-weight: 600; letter-spacing: 1px; color: var(--green-400); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .section-title { font-size: 26px; font-weight: 600; color: var(--gray-900); margin-bottom: 2rem; letter-spacing: -0.4px; }
 
-    /* SECTIONS */
-    section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 4rem 1.5rem;
-    }
-
-    .section-label {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      color: var(--green-400);
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .section-title {
-      font-size: 26px;
-      font-weight: 600;
-      color: var(--gray-900);
-      margin-bottom: 2rem;
-      letter-spacing: -0.4px;
-    }
-
-    /* STEPS */
     .steps { display: flex; flex-direction: column; gap: 1px; }
-
-    .step {
-      display: flex;
-      gap: 18px;
-      padding: 1.25rem 1.5rem;
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-    }
-
+    .step { display: flex; gap: 18px; padding: 1.25rem 1.5rem; background: var(--white); border: 1px solid var(--gray-200); }
     .step:first-child { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
     .step:last-child  { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
-
-    .step-num {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: var(--green-50);
-      color: var(--green-800);
-      font-size: 13px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
+    .step-num { width: 30px; height: 30px; border-radius: 50%; background: var(--green-50); color: var(--green-800); font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
     .step h3 { font-size: 15px; font-weight: 600; color: var(--gray-900); margin-bottom: 4px; }
     .step p  { font-size: 14px; color: var(--gray-500); line-height: 1.6; }
 
-    /* FEATURES */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 14px;
-    }
+    .article-types { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 2rem; }
+    .type-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 1.5rem; }
+    .type-card h3 { font-size: 16px; font-weight: 600; color: var(--gray-900); margin-bottom: 0.5rem; }
+    .type-card p { font-size: 14px; color: var(--gray-500); line-height: 1.6; }
+    .type-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: var(--radius-full); margin-bottom: 0.75rem; background: var(--green-50); color: var(--green-800); }
+    .upload-note { display: flex; gap: 12px; align-items: flex-start; background: var(--green-50); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin-top: 0.5rem; }
+    .upload-note svg { width: 18px; height: 18px; stroke: var(--green-600); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 2px; }
+    .upload-note p { font-size: 14px; color: var(--green-800); line-height: 1.6; }
+    .upload-note strong { font-weight: 600; }
 
-    .feature-card {
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius-lg);
-      padding: 1.25rem;
-    }
-
-    .feature-icon {
-      width: 38px;
-      height: 38px;
-      background: var(--green-50);
-      border-radius: 9px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 0.75rem;
-    }
-
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+    .feature-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 1.25rem; }
+    .feature-icon { width: 38px; height: 38px; background: var(--green-50); border-radius: 9px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; }
     .feature-icon svg { width: 18px; height: 18px; stroke: var(--green-600); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-
     .feature-card h3 { font-size: 14px; font-weight: 600; color: var(--gray-900); margin-bottom: 5px; }
     .feature-card p  { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
 
-    /* SOURCES */
     .sources-list { display: flex; flex-wrap: wrap; gap: 10px; }
-
-    .source-pill {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 16px;
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius-full);
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--gray-500);
-    }
-
+    .source-pill { display: flex; align-items: center; gap: 8px; padding: 9px 16px; background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-full); font-size: 14px; font-weight: 500; color: var(--gray-500); }
     .source-pill svg { width: 16px; height: 16px; stroke: var(--green-400); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
-    /* CTA BOTTOM */
-    .cta-bottom {
-      background: var(--green-50);
-      border-radius: var(--radius-lg);
-      padding: 3rem 1.5rem;
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto 4rem;
-    }
+    .cta-bottom { background: var(--green-50); border-radius: var(--radius-lg); padding: 3rem 1.5rem; text-align: center; max-width: 900px; margin: 0 auto 4rem; }
+    .cta-bottom h2 { font-size: 24px; font-weight: 600; color: var(--green-800); margin-bottom: 0.5rem; letter-spacing: -0.4px; line-height: 1.3; }
+    .cta-bottom .cta-sub { font-size: 15px; color: var(--green-600); font-weight: 500; margin-bottom: 1.75rem; }
 
-    .cta-bottom h2 {
-      font-size: 24px;
-      font-weight: 600;
-      color: var(--green-800);
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.4px;
-      line-height: 1.3;
-    }
-
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 13px;
-      color: #BBBBBB;
-      border-top: 1px solid var(--gray-200);
-    }
+    footer { text-align: center; padding: 2rem; font-size: 13px; color: #BBBBBB; border-top: 1px solid var(--gray-200); }
 
     @media (max-width: 520px) {
-      .form-wrap { flex-direction: column; }
-      .btn { width: 100%; }
+      .form-row { flex-direction: column; }
       nav a.nav-cta { display: none; }
+      .manifesto-text { font-size: 17px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <div class="logo">
       <div class="logo-icon">
@@ -349,14 +118,34 @@
   <div class="hero" id="waitlist">
     <div class="badge">Lista de espera aberta</div>
     <h1>Pesquisa científica com<br><em>fontes que você pode confiar</em></h1>
-    <p>Um assistente colaborativo para pesquisadores das ciências biológicas e medicina. Busca, verifica e organiza fontes reais — sem inventar referências, sem atalhos.</p>
+    <p class="tagline">Seu parceiro de produção científica.</p>
+    <p>Um assistente colaborativo para pesquisadores das ciências biológicas e medicina. Você define as diretrizes — o ArticleLab busca, verifica e formata. A autoria é sempre sua.</p>
 
-    <div class="form-wrap">
-      <input type="email" id="email-hero" placeholder="seu@email.com" aria-label="Seu e-mail" />
-      <button class="btn" onclick="handleSubmit('email-hero','success-hero','form-hero')">Entrar na lista</button>
-    </div>
+    <form class="form-wrap" id="form-hero" action="https://formspree.io/f/xpqnwplp" method="POST">
+      <input type="text" name="name" placeholder="Seu nome" required aria-label="Seu nome" />
+      <div class="form-row">
+        <input type="email" name="email" placeholder="seu@email.com" required aria-label="Seu e-mail" />
+        <button type="submit" class="btn" style="width:auto;">Entrar na lista</button>
+      </div>
+      <input type="hidden" name="_subject" value="Nova inscrição — ArticleLab Lista de Espera" />
+    </form>
     <div class="success-msg" id="success-hero">✓ Ótimo! Você está na lista. Avisaremos em breve.</div>
-    <p class="form-note" id="form-hero">Sem spam. Você será avisado quando o acesso for liberado.</p>
+    <div class="error-msg" id="error-hero">Algo deu errado. Tente novamente.</div>
+    <p class="form-note" id="note-hero">Sem spam. Você será avisado quando o acesso for liberado.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- MANIFESTO -->
+  <div class="manifesto-wrap">
+    <div class="manifesto-inner">
+      <span class="manifesto-label">Nosso manifesto</span>
+      <div class="manifesto-text">
+        <p>Acreditamos que a ciência nasce de <em>mentes humanas bem instrumentadas</em>, não de máquinas no piloto automático.</p>
+        <p>O ArticleLab não entrega artigos prontos. Entrega pesquisa verificada — uma construção conjunta onde cada decisão, de hipótese a conclusão, é tomada por quem realmente entende do assunto: <em>você</em>.</p>
+        <p>Porque no fim, o nome no artigo é o seu. <em>A autoria pertence ao pesquisador.</em></p>
+      </div>
+    </div>
   </div>
 
   <div class="divider"></div>
@@ -364,36 +153,60 @@
   <!-- COMO FUNCIONA -->
   <section>
     <p class="section-label">Como funciona</p>
-    <h2 class="section-title">Do tema ao artigo, passo a passo</h2>
+    <h2 class="section-title">Você dá as diretrizes. O ArticleLab constrói com você.</h2>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div>
-          <h3>Você apresenta o tema</h3>
-          <p>Conta sobre a área, o público-alvo e o recorte temporal. O ArticleLab faz as perguntas certas antes de avançar.</p>
+          <h3>Você apresenta o tema e as diretrizes</h3>
+          <p>Define a área, o público-alvo, o recorte temporal e a revista desejada. O ArticleLab faz as perguntas certas e confirma o entendimento antes de avançar.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div>
-          <h3>Busca em bases confiáveis</h3>
-          <p>Pesquisa automaticamente no PubMed, Semantic Scholar e bioRxiv — e verifica cada DOI antes de recomendar.</p>
+          <h3>Busca e verificação em bases confiáveis</h3>
+          <p>Pesquisa no PubMed, Semantic Scholar e bioRxiv — e verifica cada DOI antes de recomendar. Nenhuma fonte é apresentada sem confirmação.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div>
           <h3>Você valida o racional</h3>
-          <p>Antes de escrever uma linha, apresenta o panorama do campo e as possíveis direções. A decisão científica é sempre sua.</p>
+          <p>Antes de escrever uma linha, o ArticleLab apresenta o panorama do campo e as possíveis direções. A decisão científica é sempre sua.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">4</div>
         <div>
-          <h3>Artigo estruturado e rastreável</h3>
-          <p>Gera introdução, desenvolvimento, discussão e referências — com cada informação identificada pela sua fonte original.</p>
+          <h3>Artigo construído no formato da sua revista</h3>
+          <p>Estrutura, estilo de citação, limite de palavras e normas da revista-alvo — tudo respeitado. Referências em ABNT ou Vancouver, prontas para submissão.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TIPOS DE ARTIGO -->
+  <section>
+    <p class="section-label">Tipos de artigo</p>
+    <h2 class="section-title">Para cada pesquisa, o formato certo</h2>
+    <div class="article-types">
+      <div class="type-card">
+        <span class="type-tag">Artigo de revisão</span>
+        <h3>Revisão da literatura</h3>
+        <p>O ArticleLab sintetiza o estado da arte sobre o tema, identifica lacunas e organiza as evidências em uma revisão crítica e estruturada — com todas as fontes rastreáveis.</p>
+      </div>
+      <div class="type-card">
+        <span class="type-tag">Artigo original</span>
+        <h3>Pesquisa com dados próprios</h3>
+        <p>Faça upload dos seus dados em Excel, CSV ou PDF. O ArticleLab integra seus resultados à pesquisa bibliográfica e constrói o artigo conectando suas evidências à literatura existente.</p>
+      </div>
+    </div>
+    <div class="upload-note">
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      <p><strong>Formatos aceitos para upload de dados:</strong> Excel (.xlsx), planilhas CSV, relatórios em PDF e documentos Word. O ArticleLab lê seus dados, interpreta os resultados e os integra ao artigo com rigor metodológico.</p>
     </div>
   </section>
 
@@ -405,30 +218,32 @@
     <h2 class="section-title">Feito para quem leva ciência a sério</h2>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <h3>Anti-alucinação</h3>
         <p>Nenhuma referência é criada da memória. Só fontes verificadas aparecem no seu artigo.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-        </div>
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <h3>Construção conjunta</h3>
+        <p>Você define as diretrizes em cada etapa. O ArticleLab executa a melhor formatação, mas o caminho científico é sempre seu.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <h3>Customizado por revista</h3>
+        <p>Informe a revista-alvo e o artigo é formatado conforme suas normas: estrutura, citações, limite de palavras e estilo do abstract.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
         <h3>Multilíngue</h3>
-        <p>Responde no idioma do pesquisador. Busca sem restrição de idioma nas bases.</p>
+        <p>Responde no idioma do pesquisador. Busca sem restrição de idioma nas bases científicas.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-        </div>
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
         <h3>Colaborativo</h3>
-        <p>Explica o raciocínio, faz perguntas e aguarda sua aprovação em cada etapa.</p>
+        <p>Explica o raciocínio, faz perguntas e aguarda sua aprovação em cada etapa. Você nunca perde o controle.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        </div>
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
         <h3>ABNT ou Vancouver</h3>
         <p>Referências formatadas no padrão que você escolher, prontas para submissão.</p>
       </div>
@@ -442,22 +257,10 @@
     <p class="section-label">Fontes consultadas</p>
     <h2 class="section-title">Bases com rigor científico</h2>
     <div class="sources-list">
-      <div class="source-pill">
-        <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-        PubMed
-      </div>
-      <div class="source-pill">
-        <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-        Semantic Scholar
-      </div>
-      <div class="source-pill">
-        <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-        bioRxiv
-      </div>
-      <div class="source-pill">
-        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        Mais bases em breve
-      </div>
+      <div class="source-pill"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>PubMed</div>
+      <div class="source-pill"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>Semantic Scholar</div>
+      <div class="source-pill"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>bioRxiv</div>
+      <div class="source-pill"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Mais bases em breve</div>
     </div>
   </section>
 
@@ -466,44 +269,62 @@
   <!-- CTA BOTTOM -->
   <section style="padding-bottom: 0;">
     <div class="cta-bottom">
-      <h2>Pronto para pesquisar com mais<br>confiança e menos retrabalho?</h2>
-      <div class="form-wrap" style="margin-bottom: 0.75rem;">
-        <input type="email" id="email-bottom" placeholder="seu@email.com" aria-label="Seu e-mail" />
-        <button class="btn" onclick="handleSubmit('email-bottom','success-bottom','form-bottom')">Entrar na lista</button>
-      </div>
+      <h2>Pronto para ter um parceiro<br>de produção científica?</h2>
+      <p class="cta-sub">Seu parceiro de produção científica.</p>
+      <form class="form-wrap" id="form-bottom" action="https://formspree.io/f/xpqnwplp" method="POST" style="margin-bottom: 0.75rem;">
+        <input type="text" name="name" placeholder="Seu nome" required aria-label="Seu nome" />
+        <div class="form-row">
+          <input type="email" name="email" placeholder="seu@email.com" required aria-label="Seu e-mail" />
+          <button type="submit" class="btn" style="width:auto;">Entrar na lista</button>
+        </div>
+        <input type="hidden" name="_subject" value="Nova inscrição — ArticleLab Lista de Espera" />
+      </form>
       <div class="success-msg" id="success-bottom">✓ Ótimo! Você está na lista. Avisaremos em breve.</div>
-      <p class="form-note" id="form-bottom">Sem spam. Você será avisado quando o acesso for liberado.</p>
+      <div class="error-msg" id="error-bottom">Algo deu errado. Tente novamente.</div>
+      <p class="form-note" id="note-bottom">Sem spam. Você será avisado quando o acesso for liberado.</p>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <p>© 2026 ArticleLab. Todos os direitos reservados.</p>
   </footer>
 
   <script>
-    function handleSubmit(inputId, successId, noteId) {
-      const input = document.getElementById(inputId);
-      const success = document.getElementById(successId);
-      const note = document.getElementById(noteId);
-      if (!input.value || !input.value.includes('@')) {
-        input.style.borderColor = '#E24B4A';
-        input.focus();
-        return;
-      }
-      input.style.display = 'none';
-      input.closest('.form-wrap').querySelector('button').style.display = 'none';
-      if (note) note.style.display = 'none';
-      success.style.display = 'block';
+    function handleForm(formId, successId, errorId, noteId) {
+      const form = document.getElementById(formId);
+      if (!form) return;
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.textContent = 'Enviando...';
+        try {
+          const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+          if (response.ok) {
+            form.style.display = 'none';
+            document.getElementById(successId).style.display = 'block';
+            const note = document.getElementById(noteId);
+            if (note) note.style.display = 'none';
+          } else {
+            document.getElementById(errorId).style.display = 'block';
+            btn.disabled = false;
+            btn.textContent = 'Entrar na lista';
+          }
+        } catch {
+          document.getElementById(errorId).style.display = 'block';
+          btn.disabled = false;
+          btn.textContent = 'Entrar na lista';
+        }
+      });
     }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+    handleForm('form-hero', 'success-hero', 'error-hero', 'note-hero');
+    handleForm('form-bottom', 'success-bottom', 'error-bottom', 'note-bottom');
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e) {
         e.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
       });
     });
   </script>
-
 </body>
 </html>
